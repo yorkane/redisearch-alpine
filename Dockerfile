@@ -41,6 +41,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && sed -i "s/^#* *maxmemory-policy .*$/maxmemory-policy $REDIS_MAXMEMORY_POLICY/" /etc/redis.conf \
     && sed -i "s/^# loadmodule \/path\/to\/my_module.so/loadmodule \/redis\/redisearch.so/" /etc/redis.conf \
     && sed -i "s/^# loadmodule \/path\/to\/other_module.so/loadmodule \/redis\/rejson.so/" /etc/redis.conf \
+    && sed -i "s/^loadmodule \/redis\/rejson.so/loadmodule \/redis\/rejson.so\nloadmodule \/redis\/redis-roaring.so\n/" /etc/redis.conf \
     && cp /etc/redis.conf /redis/redis.conf \
     && chmod 755 /redis/redis_entrypont.sh \
     && echo "redis-server --loadmodule /redis/redisearch.so --loadmodule /redis/rejson.so --loadmodule /redis/redis-roaring.so --requirepass $REDIS_PASSWORD"

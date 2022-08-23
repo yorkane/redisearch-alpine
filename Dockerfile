@@ -7,14 +7,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     cd /data/ &&curl -L https://github.com/RediSearch/RediSearch/archive/refs/tags/v2.2.7.zip | bsdtar -xkf- -C ./ && \
     cd RediSearch-* && mkdir build -p && cd build && cmake .. && make && \
     echo "RediSearch build finished!"
-# friso initialize
-#RUN cd /data/ && curl -L "https://github.com/lionsoul2014/friso/archive/refs/heads/master.zip" |  bsdtar -xkf- -C ./ &&\
-#    mv friso-*/ friso/ &&\
-#    mkdir /friso/dict/ -p && mv friso/vendors/dict/UTF-8/ /friso/dict/ &&\
-#    cp friso/friso.ini /friso/ && sed -i "s/^friso.lex_dir .*$/friso.lex_dir  = \/friso\/dict\/UTF-8\//" /friso/friso.ini &&\
-#    cd /friso/dict/UTF-8/ && echo "#" > lex-extra1.lex && echo "#" > lex-extra2.lex && echo "#" > lex-extra3.lex &&\
-#    sed -i "s/# add more here.*$/\tlex-extra1.lex;\n\tlex-extra2.lex;\n\tlex-extra3.lex;/" /friso/dict/UTF-8/friso.lex.ini &&\
-#    echo "friso initialized"
 
 # roaring
 RUN	cd /data/ && curl -L https://github.com/yorkane/redis-roaring/archive/refs/heads/main.zip | bsdtar -xkf- -C ./ && \
